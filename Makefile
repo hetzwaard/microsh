@@ -20,7 +20,7 @@ SRCS += $(SRCDIR)/utils/execvp.c
 SRCS += $(SRCDIR)/utils/wait.c
 SRCS += $(SRCDIR)/utils/fork.c
 SRCS += $(SRCDIR)/utils/banner.c
-SRCS += $(SRCDIR)/micro/micro_commands.c
+SRCS += $(SRCDIR)/micro/micro_coms.c
 SRCS += $(SRCDIR)/micro/micro_line.c
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
