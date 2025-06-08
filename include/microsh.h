@@ -6,7 +6,7 @@
 /*   By: mahkilic <mahkilic@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/06/07 19:42:22 by mahkilic      #+#    #+#                 */
-/*   Updated: 2025/06/07 19:42:22 by mahkilic      ########   odam.nl         */
+/*   Updated: 2025/06/08 03:58:01 by mahkilic      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_builtin
 	int			(*foo)(char **);
 }				t_builtin;
 
-void			banner(void);
+void			banner_sh(void);
 
 void			execvp_sh(const char *file, char *const argv[]);
 void			getcwd_sh(char *buf, size_t size);

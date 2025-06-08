@@ -6,13 +6,13 @@
 /*   By: mahkilic <mahkilic@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/06/08 02:20:37 by mahkilic      #+#    #+#                 */
-/*   Updated: 2025/06/08 02:20:37 by mahkilic      ########   odam.nl         */
+/*   Updated: 2025/06/08 03:57:49 by mahkilic      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/microsh.h"
 
-void	banner(void)
+void	banner_sh(void)
 {
 	ft_printf(CLOVER "\n"
 		"███╗   ███╗██╗ ██████╗██████╗  ██████╗ ███████╗██╗  ██╗\n"
