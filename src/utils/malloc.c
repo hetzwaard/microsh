@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   microsh.c                                          :+:    :+:            */
+/*   malloc.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mahkilic <mahkilic@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/06/07 19:42:36 by mahkilic      #+#    #+#                 */
-/*   Updated: 2025/06/07 19:42:36 by mahkilic      ########   odam.nl         */
+/*   Created: 2025/06/08 02:15:35 by mahkilic      #+#    #+#                 */
+/*   Updated: 2025/06/08 02:15:35 by mahkilic      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/microsh.h"
+#include "../../include/microsh.h"
 
-static void	microsh(void)
+void	*malloc_sh(size_t size)
 {
-	char	*line;
-	char	**args;
+	void	*ptr;
 
-	banner();
-	line = micro_read_line();
-	while (line)
+	if (size == 0)
+		return (NULL);
+	ptr = malloc(size);
+	if (!ptr)
 	{
-		args = micro_split_line(line);
-		if (args[0] != NULL)
-			micro_exec(args);
-		free(line);
-		free(args);
-		line = micro_read_line();
+		ft_putstr_fd(RED "Malloc failed.\n" RST, STDERR_FILENO);
+		exit(EXIT_FAILURE);
 	}
-}
-
-int	main(void)
-{
-	microsh();
-	return (EXIT_SUCCESS);
+	return (ptr);
 }

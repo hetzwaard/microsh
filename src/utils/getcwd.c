@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   microsh.c                                          :+:    :+:            */
+/*   getcwd.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mahkilic <mahkilic@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/06/07 19:42:36 by mahkilic      #+#    #+#                 */
-/*   Updated: 2025/06/07 19:42:36 by mahkilic      ########   odam.nl         */
+/*   Created: 2025/06/08 02:13:52 by mahkilic      #+#    #+#                 */
+/*   Updated: 2025/06/08 02:13:52 by mahkilic      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/microsh.h"
+#include "../../include/microsh.h"
 
-static void	microsh(void)
+void	getcwd_sh(char *buf, size_t size)
 {
-	char	*line;
-	char	**args;
-
-	banner();
-	line = micro_read_line();
-	while (line)
-	{
-		args = micro_split_line(line);
-		if (args[0] != NULL)
-			micro_exec(args);
-		free(line);
-		free(args);
-		line = micro_read_line();
-	}
-}
-
-int	main(void)
-{
-	microsh();
-	return (EXIT_SUCCESS);
+	if (getcwd(buf, size) == NULL)
+		ft_putstr_fd(RED"getcwd FAILED.\n"RST, STDERR_FILENO);
 }

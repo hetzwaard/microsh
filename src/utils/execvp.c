@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   microsh.c                                          :+:    :+:            */
+/*   execvp.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mahkilic <mahkilic@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/06/07 19:42:36 by mahkilic      #+#    #+#                 */
-/*   Updated: 2025/06/07 19:42:36 by mahkilic      ########   odam.nl         */
+/*   Created: 2025/06/08 02:17:27 by mahkilic      #+#    #+#                 */
+/*   Updated: 2025/06/08 02:17:27 by mahkilic      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/microsh.h"
+#include "../../include/microsh.h"
 
-static void	microsh(void)
+void	execvp_sh(const char *file, char *const argv[])
 {
-	char	*line;
-	char	**args;
-
-	banner();
-	line = micro_read_line();
-	while (line)
+	if (!file || !argv)
 	{
-		args = micro_split_line(line);
-		if (args[0] != NULL)
-			micro_exec(args);
-		free(line);
-		free(args);
-		line = micro_read_line();
+		fprintf(stderr, RED "Execvp: invalid arguments.\n" RST);
+		exit(EXIT_FAILURE);
 	}
-}
-
-int	main(void)
-{
-	microsh();
-	return (EXIT_SUCCESS);
+	if (execvp(file, argv) == -1)
+	{
+		ft_putstr_fd(RED "MICRO_JR failed.\n" RST, STDERR_FILENO);
+		exit(EX_UNAVAILABLE);
+	}
 }

@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   microsh.c                                          :+:    :+:            */
+/*   realloc.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mahkilic <mahkilic@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/06/07 19:42:36 by mahkilic      #+#    #+#                 */
-/*   Updated: 2025/06/07 19:42:36 by mahkilic      ########   odam.nl         */
+/*   Created: 2025/06/08 02:16:29 by mahkilic      #+#    #+#                 */
+/*   Updated: 2025/06/08 02:16:29 by mahkilic      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/microsh.h"
+#include "../../include/microsh.h"
 
-static void	microsh(void)
+void	*realloc_sh(void *ptr, size_t size)
 {
-	char	*line;
-	char	**args;
+	void	*new_ptr;
 
-	banner();
-	line = micro_read_line();
-	while (line)
+	new_ptr = realloc(ptr, size);
+	if (!new_ptr && size != 0)
 	{
-		args = micro_split_line(line);
-		if (args[0] != NULL)
-			micro_exec(args);
-		free(line);
-		free(args);
-		line = micro_read_line();
+		ft_putstr_fd(RED "Realloc failed.\n" RST, STDERR_FILENO);
+		exit(EXIT_FAILURE);
 	}
-}
-
-int	main(void)
-{
-	microsh();
-	return (EXIT_SUCCESS);
+	return (new_ptr);
 }

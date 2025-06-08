@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   microsh.c                                          :+:    :+:            */
+/*   wait.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mahkilic <mahkilic@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/06/07 19:42:36 by mahkilic      #+#    #+#                 */
-/*   Updated: 2025/06/07 19:42:36 by mahkilic      ########   odam.nl         */
+/*   Created: 2025/06/08 02:18:26 by mahkilic      #+#    #+#                 */
+/*   Updated: 2025/06/08 02:18:26 by mahkilic      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/microsh.h"
+#include "../../include/microsh.h"
 
-static void	microsh(void)
+pid_t	wait_sh(int *status)
 {
-	char	*line;
-	char	**args;
+	pid_t	result;
 
-	banner();
-	line = micro_read_line();
-	while (line)
+	if (!status)
 	{
-		args = micro_split_line(line);
-		if (args[0] != NULL)
-			micro_exec(args);
-		free(line);
-		free(args);
-		line = micro_read_line();
+		fprintf(stderr, RED "Wait: status argument required.\n" RST);
+		return (-1);
 	}
-}
-
-int	main(void)
-{
-	microsh();
-	return (EXIT_SUCCESS);
+	result = wait(status);
+	if (result == -1)
+		ft_putstr_fd(RED "Wait failed.\n" RST, STDERR_FILENO);
+	if (WIFEXITED(*status))
+		*status = WEXITSTATUS(*status);
+	return (result);
 }
