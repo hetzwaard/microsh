@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   execvp.c                                           :+:    :+:            */
+/*   execve.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mahkilic <mahkilic@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
@@ -12,14 +12,24 @@
 
 #include "../../include/microsh.h"
 
-void	execvp_sh(const char *file, char *const argv[])
+extern char	**environ;
+
+void	execve_sh(const char *file, char *const argv[])
 {
+	char	*full_path;
+
 	if (!file || !argv)
 	{
-		fprintf(stderr, RED "Execvp: invalid arguments.\n" RST);
+		fprintf(stderr, RED "Execve: invalid arguments.\n" RST);
 		exit(EXIT_FAILURE);
 	}
-	if (execvp(file, argv) == -1)
+	full_path = micro_path(file);
+	if (!full_path)
+	{
+		ft_putstr_fd(RED "Command not found.\n" RST, STDERR_FILENO);
+		exit(EX_UNAVAILABLE);
+	}
+	if (execve(full_path, argv, environ) == -1)
 	{
 		ft_putstr_fd(RED "MICRO_JR failed.\n" RST, STDERR_FILENO);
 		exit(EX_UNAVAILABLE);

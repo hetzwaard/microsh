@@ -16,12 +16,13 @@ SRCS = $(SRCDIR)/microsh.c
 SRCS += $(SRCDIR)/utils/getcwd.c
 SRCS += $(SRCDIR)/utils/malloc.c
 SRCS += $(SRCDIR)/utils/realloc.c
-SRCS += $(SRCDIR)/utils/execvp.c
+SRCS += $(SRCDIR)/utils/execve.c
 SRCS += $(SRCDIR)/utils/wait.c
 SRCS += $(SRCDIR)/utils/fork.c
 SRCS += $(SRCDIR)/utils/banner.c
 SRCS += $(SRCDIR)/micro/micro_coms.c
 SRCS += $(SRCDIR)/micro/micro_line.c
+SRCS += $(SRCDIR)/micro/micro_path.c
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
 # Output executable

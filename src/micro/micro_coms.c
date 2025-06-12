@@ -46,7 +46,7 @@ int	micro_env(char **args)
 void	micro_launch(char **args)
 {
 	if (fork_sh() == MICRO_JR)
-		execvp_sh(args[0], args);
+		execve_sh(args[0], args);
 	else
 		wait_sh(&g_status);
 }

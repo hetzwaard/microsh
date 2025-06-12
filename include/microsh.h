@@ -31,27 +31,41 @@
 # define DEL "\n\t \v\f\r"
 # define MICRO_JR 0
 
+typedef struct s_cmd_table
+{
+	char				**cmd;
+	char				*infile;
+	char				*outfile;
+	int					infd;
+	int					outfd;
+	int					append_flag;
+	char				*heredoc_delim;
+	struct s_cmd_table	*next;
+
+}						t_cmd_table;
+
 typedef struct s_builtin
 {
-	const char	*builtin_name;
-	int			(*foo)(char **);
-}				t_builtin;
+	const char			*builtin_name;
+	int					(*foo)(char **);
+}						t_builtin;
 
-void			banner_sh(void);
+void					banner_sh(void);
 
-void			execvp_sh(const char *file, char *const argv[]);
-void			getcwd_sh(char *buf, size_t size);
-void			*malloc_sh(size_t size);
-void			*realloc_sh(void *ptr, size_t size);
-pid_t			wait_sh(int *status);
-pid_t			fork_sh(void);
+void					execve_sh(const char *file, char *const argv[]);
+void					getcwd_sh(char *buf, size_t size);
+void					*malloc_sh(size_t size);
+void					*realloc_sh(void *ptr, size_t size);
+pid_t					wait_sh(int *status);
+pid_t					fork_sh(void);
 
-char			*micro_read_line(void);
-char			**micro_split_line(char *line);
+char					*micro_read_line(void);
+char					**micro_split_line(char *line);
 
-int				micro_exit(char **args);
-int				micro_env(char **args);
-void			micro_launch(char **args);
-void			micro_exec(char **args);
+int						micro_exit(char **args);
+int						micro_env(char **args);
+void					micro_launch(char **args);
+void					micro_exec(char **args);
+char					*micro_path(const char *cmd);
 
 #endif
