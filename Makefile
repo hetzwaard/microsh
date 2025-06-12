@@ -23,6 +23,13 @@ SRCS += $(SRCDIR)/utils/banner.c
 SRCS += $(SRCDIR)/micro/micro_coms.c
 SRCS += $(SRCDIR)/micro/micro_line.c
 SRCS += $(SRCDIR)/micro/micro_path.c
+#SRCS += $(SRCDIR)/commands/micro_cd.c
+#SRCS += $(SRCDIR)/commands/micro_echo.c
+SRCS += $(SRCDIR)/commands/micro_env.c
+SRCS += $(SRCDIR)/commands/micro_exit.c
+#SRCS += $(SRCDIR)/commands/micro_export.c
+#SRCS += $(SRCDIR)/commands/micro_pwd.c
+#SRCS += $(SRCDIR)/commands/micro_unset.c
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
 # Output executable

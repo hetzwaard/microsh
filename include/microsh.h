@@ -50,8 +50,8 @@ typedef struct s_builtin
 	int					(*foo)(char **);
 }						t_builtin;
 
+/* UTILS */
 void					banner_sh(void);
-
 void					execve_sh(const char *file, char *const argv[]);
 void					getcwd_sh(char *buf, size_t size);
 void					*malloc_sh(size_t size);
@@ -59,13 +59,16 @@ void					*realloc_sh(void *ptr, size_t size);
 pid_t					wait_sh(int *status);
 pid_t					fork_sh(void);
 
-char					*micro_read_line(void);
+/* MICROSH */
 char					**micro_split_line(char *line);
+char					*micro_path(const char *cmd);
+char					*micro_read_line(void);
 
+/* COMMANDS */
 int						micro_exit(char **args);
 int						micro_env(char **args);
 void					micro_launch(char **args);
 void					micro_exec(char **args);
-char					*micro_path(const char *cmd);
+int						micro_env(char **args);
 
 #endif

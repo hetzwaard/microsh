@@ -15,33 +15,15 @@
 int			g_status = 0;
 
 t_builtin	g_builtin[] = {
-{.builtin_name = "env", .foo = micro_env},
-{.builtin_name = "exit", .foo = micro_exit},
-{.builtin_name = NULL, .foo = NULL},
+	//{.builtin_name = "cd", .foo = micro_cd},
+	//{.builtin_name = "echo", .foo = micro_echo},
+	{.builtin_name = "env", .foo = micro_env},
+	{.builtin_name = "exit", .foo = micro_exit},
+	//{.builtin_name = "export", .foo = micro_export},
+	//{.builtin_name = "pwd", .foo = micro_pwd},
+	//{.builtin_name = "unset", .foo = micro_unset},
+	{.builtin_name = NULL, .foo = NULL},
 };
-
-int	micro_exit(char **args)
-{
-	(void)args;
-	exit(EXIT_SUCCESS);
-}
-
-int	micro_env(char **args)
-{
-	extern char	**environ;
-	int			i;
-
-	(void)args;
-	if (!environ)
-		return (1);
-	i = 0;
-	while (environ[i])
-	{
-		ft_printf("%s\n", environ[i]);
-		i++;
-	}
-	return (0);
-}
 
 void	micro_launch(char **args)
 {
