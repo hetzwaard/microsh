@@ -65,10 +65,11 @@ char					*micro_path(const char *cmd);
 char					*micro_read_line(void);
 
 /* COMMANDS */
-int						micro_exit(char **args);
-int						micro_env(char **args);
 void					micro_launch(char **args);
 void					micro_exec(char **args);
+int						micro_exit(char **args);
 int						micro_env(char **args);
+int						micro_env(char **args);
+int						micro_cd(char **args);
 
 #endif

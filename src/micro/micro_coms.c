@@ -15,14 +15,14 @@
 int			g_status = 0;
 
 t_builtin	g_builtin[] = {
-	//{.builtin_name = "cd", .foo = micro_cd},
+{.builtin_name = "cd", .foo = micro_cd},
 	//{.builtin_name = "echo", .foo = micro_echo},
-	{.builtin_name = "env", .foo = micro_env},
-	{.builtin_name = "exit", .foo = micro_exit},
+{.builtin_name = "env", .foo = micro_env},
+{.builtin_name = "exit", .foo = micro_exit},
 	//{.builtin_name = "export", .foo = micro_export},
 	//{.builtin_name = "pwd", .foo = micro_pwd},
 	//{.builtin_name = "unset", .foo = micro_unset},
-	{.builtin_name = NULL, .foo = NULL},
+{.builtin_name = NULL, .foo = NULL},
 };
 
 void	micro_launch(char **args)
